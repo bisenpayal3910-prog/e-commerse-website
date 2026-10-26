@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecom Store - Online Shopping</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <header>
+        <a href="#" class="logo">EcomStore</a>
+
+
+        <div class="search-box">
+            <input type="text" 
+            id="searchInput"
+            placeholder="Search Products..."
+            aria-label="Search products"
+            >
+            <button id="searchBtn">Search</button>
+        </div>
+
+        <button class="cart-button" id="cartBtn" type="button">
+            🛒 <span id="cartCount">0</span>
+        </button>
+
+    </header>
+
+
+    <main class="container">
+        <section class="hero">
+            <p class="eyebrow">Your Everyday Shopping Destination</p>
+            <h1>Find Your Next <span>Favorite</span></h1>
+            <p>
+                Discover products you 'll love at pricess you'll enjoy
+            </p>
+        </section>
+
+        <section class="product-section">
+            <div class="section-heading">
+                <div>
+                    <h2>Explore products</h2>
+                    <p>Find the right products for you</p>
+                </div>
+                <select id="sortSelect" aria-label="Sort products">
+                    <option value="default">Featured</option>
+                    <option value="price-low">Price: Low To High</option>
+                    <option value="price-high">Price: High To Low</option>
+                    <option value="rating">Top Rated</option>
+                </select>
+            </div>
+
+            <div class="categoires" id="category-Filters">
+                <button class="category-button active">All Products</button>
+                <button class="category-button">Electronics</button>
+                <button class="category-button">Fashion</button>
+                <button class="category-button">Computer Accesseries</button>
+                <button class="category-button">Home & Living</button>
+            </div>
+
+            <div class="product-grid" id="productGrid">
+
+                <div class="empty-message">
+                    <h3>
+                        Products are coming soon !
+                    </h3>
+                    <p>We'll display products here using Javascript</p>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>©️ 2026 EcomStore</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
