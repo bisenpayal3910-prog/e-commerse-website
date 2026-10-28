@@ -21,7 +21,7 @@ const products = [
       rating:4.5,
       image:"https://images.unsplash.com/photo-1585386959984-a415522c1f2e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aGVhZHBob25lc3xlbnwwfHwwfHx8&auto=format&fit=crop&w=500&q=60"
     },
-
+      
     {
       id:2,
       name:"Smart Watch",
@@ -46,7 +46,7 @@ const products = [
       price : 55999 ,
       category : "electronics",
       rating:4.5,
-      image:"https://images.unsplash.com/photo-1493246507139-916f3c187c96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bGFwdG9ufGVufDB8fDB8fHwxNjc5MjM0MjM1&auto=format&fit=crop&w=500&q=60"
+      image:"https://m.media-amazon.com/images/I/510uTHyDqGL.jpg"
     },
     {
       id:5,
@@ -68,6 +68,22 @@ const products = [
 ]
 const cart = []
 
+// helper function to escape HTML
+
+function escapeHTML(value) {
+    return String(value).replace(/[&<>"']/g, character => {
+        const entities = {
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#39;"
+        }
+
+        return entities[character]
+    })
+}
+
 //Render products
 
 function renderProducts(productList){
@@ -82,27 +98,74 @@ function renderProducts(productList){
         return
     }
 
-    //generate html for every product
-    let productsHTML = ""
-    productList.forEach(product => {
-        productsHTML += `
-        <article class ="product-card">
-        <div class ="product-image>
-         <img
-         src = "${escapeHTML(product.image)}" 
-         alt= "${escapeHTML(product.name)} 
-         loading ="lazy">
+   // generates HTML for every product
 
-         <span class = "product-rating">${Number(product.rating).toFixed(1)}</span>
-        </div>
-        </article>        `
+    let productHTML = ""
+
+    productList.forEach(product => {
+        productHTML += `
+        <article class="product-cardd">
+            <div class="product-image">
+                <img
+                    src="${escapeHTML(product.image)}"
+                    alt="${escapeHTML(product.name)}"
+                    loading="lazy"
+                >
+
+                <span class="product-rating">
+                    ${Number(product.rating).toFixed(1)}
+                </span>
+            </div>
+
+            <div>
+                <p class="product-category">
+                    ${escapeHTML(product.category)}
+                </p>
+
+                <h3 class="product-name">
+                    ${escapeHTML(product.name)}
+                </h3>
+
+                <div class="product-bottom">
+                    <span class="product-price">
+                        ${Number(product.price).toLocaleString("en-IN")}
+                    </span>
+
+                    <button
+                        class="add-to-cart-btn"
+                        type="button"
+                        data-product-id="${Number(product.id)}"
+                        disabled
+                        title="Cart functionality coming on Day 6"
+                    >
+                        Add to cart
+                    </button>
+                </div>
+            </div>
+        </article>
+        `
     })
+
+    productGrid.innerHTML = productHTML
 }
 
-//step 3
-//check if elements are connected correctly
+renderProducts(products)
+
+//search function
+
+function searchProduct(){
+  //step 1 get the search input
+  const searchTerm = searchInput.value.toLowerCase().trim()
+  
+  //step 2 matching products
+  
+}
+
+// step 3
+// check if elements are connected correctly
 
 console.log("EcomStore Connected")
+console.log("Products", products.length)
 console.log("Search Input ", searchInput)
 console.log("Product Grid", productGrid)
 console.log("products",products)
