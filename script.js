@@ -1,74 +1,106 @@
-//step 1
-//select important html elements
+// Step 1: Connect HTML Elements
 
-const searchInput = document.getElementById("searchInput")
-const searchBtn = document.getElementById("searchBtn")
-const cartButton = document.getElementById("cartBtn")
-const cartCount = document.getElementById("cartCount")
-const categoryFilters = document.getElementById("categoryFilters")
-const productGrid = document.getElementById("productGrid")
-const sortSelect = document.getElementById("sortSelect")
+const searchInput = document.getElementById("searchInput");
+const searchBtn = document.getElementById("searchBtn");
+const cartButton = document.getElementById("cartBtn");
+const cartCount = document.getElementById("cartCount");
+const categoryFilters = document.getElementById("category-Filters");
+const productGrid = document.getElementById("productGrid");
+const sortSelect = document.getElementById("sortSelect");
 
-//step 2
-//Initial project data
+
+// Step 2: Initial Project Data
 
 const products = [
     {
-      id:1,
-      name:"Wireless Headphones",
-      price : 1499 ,
-      category : "electronics",
-      rating:4.5,
-      image:"https://images.unsplash.com/photo-1585386959984-a415522c1f2e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aGVhZHBob25lc3xlbnwwfHwwfHx8&auto=format&fit=crop&w=500&q=60"
+        id: 1,
+        name: "Wireless Headphones",
+        price: 1299,
+        Categories: "electronics",
+        rating: 4.5,
+        image: "https://m.media-amazon.com/images/I/31818K7ii3L._SY300_SX300_QL70_FMwebp_.jpg"
     },
-      
     {
-      id:2,
-      name:"Smart Watch",
-      price : 2999 ,
-      category : "electronics",
-      rating:4.0,
-      image:"https://images.unsplash.com/photo-1523275335684-37898b6769a7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8c21hcnQld2F0Y2h8ZW58MHx8MHx8fDE2NzkyMzQyMzU=&auto=format&fit=crop&w=500&q=60"
+        id: 2,
+        name: "Bluetooth Speaker",
+        price: 899,
+        Categories: "electronics",
+        rating: 4.2,
+        image: "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400"
     },
+    {
+        id: 3,
+        name: "Smart Watch",
+        price: 1599,
+        Categories: "electronics",
+        rating: 4.3,
+        image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400"
+    },
+    {
+        id: 4,
+        name: "Smartphone",
+        price: 12999,
+        Categories: "electronics",
+        rating: 4.6,
+        image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400"
+    },
+    {
+        id: 5,
+        name: "Running Shoes",
+        price: 1999,
+        Categories: "fashion",
+        rating: 4.4,
+        image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400"
+    },
+    {
+        id: 6,
+        name: "Classic Sunglasses",
+        price: 699,
+        Categories: "fashion",
+        rating: 4.1,
+        image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400"
+    },
+    {
+        id: 7,
+        name: "Laptop",
+        price: 45999,
+        Categories: "computer accessories",
+        rating: 4.7,
+        image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400"
+    },
+    {
+        id: 8,
+        name: "Wireless Mouse",
+        price: 499,
+        Categories: "computer accessories",
+        rating: 4.3,
+        image: "https://images.unsplash.com/photo-1527814050087-3793815479db?w=400"
+    },
+    {
+        id: 9,
+        name: "Table Lamp",
+        price: 799,
+        Categories: "home & living",
+        rating: 4.2,
+        image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=400"
+    },
+    {
+        id: 10,
+        name: "Coffee Mug",
+        price: 299,
+        Categories: "home & living",
+        rating: 4.0,
+        image: "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=400"
+    }
+];
 
-    {
-      id:3,
-      name:"television",
-      price : 14999 ,
-      category : "electronics",
-      rating:4.5,
-      image:"https://images.unsplash.com/photo-1616628180680-1e3f5c8b6f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dGVsZXZpc2lvbnxlbnwwfHwwfHx8&auto=format&fit=crop&w=500&q=60"
-    },
 
-    {
-      id:4,
-      name:"Laptop",
-      price : 55999 ,
-      category : "electronics",
-      rating:4.5,
-      image:"https://m.media-amazon.com/images/I/510uTHyDqGL.jpg"
-    },
-    {
-      id:5,
-      name:"tshirt",
-      price : 499 ,
-      category : "fashion",
-      rating:4.5,
-      image:"https://images.unsplash.com/photo-1618354691740-1e3f5c8b6f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dGVsZXZpc2lvbnxlbnwwfHwwfHx8&auto=format&fit=crop&w=500&q=60"
-    },
+// Step 3: Cart Data
 
-    {
-      id:6,
-      name:"tops",
-      price : 299 ,
-      category : "fashion",
-      rating:4.5,
-      image:"https://images.unsplash.com/photo-1585386959984-a415522c1f2e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aGVhZHBob25lc3xlbnwwfHwwfHx8&auto=format&fit=crop&w=500&q=60"
-    },
-]
-const cart = []
+const cart = [];
 
-// helper function to escape HTML
+
+// Step 4: Helper Function To Escape HTML
 
 function escapeHTML(value) {
     return String(value).replace(/[&<>"']/g, character => {
@@ -78,96 +110,213 @@ function escapeHTML(value) {
             ">": "&gt;",
             '"': "&quot;",
             "'": "&#39;"
-        }
+        };
 
-        return entities[character]
-    })
+        return entities[character];
+    });
 }
 
-//Render products
 
-function renderProducts(productList){
-    //empty data check
-    if(productList.length === 0){
+// Step 5: Render Products
+
+function renderProducts(productList) {
+
+    // Check if products are available
+
+    if (productList.length === 0) {
         productGrid.innerHTML = `
-        <div class ="empty-message">
-        <h3>No Product data Found</h3>
-        <p>Please check back later </p>
-        </div>
-        `
-        return
+            <div class="empty-message">
+                <h3>No products found</h3>
+                <p>Please check back later.</p>
+            </div>
+        `;
+
+        return;
     }
 
-   // generates HTML for every product
+    // Generate HTML for every product
 
-    let productHTML = ""
+    let productsHTML = "";
 
     productList.forEach(product => {
-        productHTML += `
-        <article class="product-cardd">
-            <div class="product-image">
-                <img
-                    src="${escapeHTML(product.image)}"
-                    alt="${escapeHTML(product.name)}"
-                    loading="lazy"
-                >
+        productsHTML += `
+            <article class="product-card">
 
-                <span class="product-rating">
-                    ${Number(product.rating).toFixed(1)}
-                </span>
-            </div>
-
-            <div>
-                <p class="product-category">
-                    ${escapeHTML(product.category)}
-                </p>
-
-                <h3 class="product-name">
-                    ${escapeHTML(product.name)}
-                </h3>
-
-                <div class="product-bottom">
-                    <span class="product-price">
-                        ${Number(product.price).toLocaleString("en-IN")}
-                    </span>
-
-                    <button
-                        class="add-to-cart-btn"
-                        type="button"
-                        data-product-id="${Number(product.id)}"
-                        disabled
-                        title="Cart functionality coming on Day 6"
+                <div class="product-image">
+                    <img
+                        src="${escapeHTML(product.image)}"
+                        alt="${escapeHTML(product.name)}"
+                        style ="width: 100%; height: 100%; object-fit: cover;"
+                        loading="lazy"
                     >
-                        Add to cart
-                    </button>
+
+                    <span class="product-rating">
+                        ${Number(product.rating).toFixed(1)}
+                    </span>
                 </div>
-            </div>
-        </article>
-        `
+
+                <div>
+                    <p class="products-category">
+                        ${escapeHTML(product.Categories)}
+                    </p>
+
+                    <h3 class="product-name">
+                        ${escapeHTML(product.name)}
+                    </h3>
+
+                    <div class="product-bottom">
+                        <span class="product-price">
+                            ₹${Number(product.price).toLocaleString("en-IN")}
+                        </span>
+
+                        <button
+                            class="add-to-cart-btn"
+                            type="button"
+                            data-product-id="${Number(product.id)}"
+                            disabled
+                            title="Cart Functionality coming on Day 6"
+                        >
+                            Add To Cart
+                        </button>
+                    </div>
+                </div>
+
+            </article>
+        `;
+    });
+
+    productGrid.innerHTML = productsHTML;
+}
+
+
+// Step 6: Check HTML Connections
+
+console.log("EcomStore connected");
+console.log("Search Input:", searchInput);
+console.log("Category Filters:", categoryFilters);
+console.log("Product Grid:", productGrid);
+console.log("Sort Select:", sortSelect);
+console.log("Products:", products);
+console.log("Cart:", cart);
+
+
+// Step 7: Display Products
+
+renderProducts(products);
+
+
+// Search Function
+
+
+ // Search Function
+function searchProduct() {
+
+    // Step 1: Get search input
+    const searchTerm = searchInput.value
+        .toLowerCase()
+        .trim();
+
+    // Step 2: Filter matching products
+    const filteredProducts = products.filter(product => {
+        return product.name
+            .toLowerCase()
+            .includes(searchTerm);
+    });
+
+    // Step 3: Display filtered products
+    renderProducts(filteredProducts);
+
+    // Step 4: Show results in console
+    console.log("Search term:", searchTerm);
+    console.log("Matching products:", filteredProducts.length);
+}
+
+// Search button click
+searchBtn.addEventListener("click", searchProduct);
+
+// Search while typing
+searchInput.addEventListener("input", searchProduct);
+
+// Search on Enter key
+searchInput.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        searchProduct();
+    }
+});
+
+//Apply filter 
+
+let selectedCategory ="all"
+
+
+function applyFilters(){
+
+    const searchTerm = searchInput.value
+    .toLowerCase()
+    .trim()
+
+    //search filter
+
+    let filteredProducts  = products.filter(product =>{
+
+        return product.name 
+        .toLowerCase()
+        .trim()
+
     })
 
-    productGrid.innerHTML = productHTML
+    //category filter
+
+    if (selectedCategory   !== "all"){
+
+        filteredProducts = filteredProducts.filter(product =>{
+            return product.category === selectedCategory
+        })
+    }
+
+    //sorting
+
+    const sortValue = sortSelect.value
+    if (sortValue === "price-low"){
+        filteredProducts.sort((a,b) =>a.price - b.price)
+
+    }else if(sortValue === "price-high"){
+        filteredProducts.sort((a,b) =>b.price - a.price)
+    }else if(sortValue === "rating"){
+        filteredProducts.sort((a,b) =>b.rating - a.rating)
+
+    }
+
+    // update webpage
+    renderProducts(filteredProducts)
+
+    //console output
+    console.log("Category :" , selectedCategory)
+    console.log("Search :" , searchTerm)
+    console.log("Sort :" , sortValue)
+    console.log("MAtching Products ", filteredProducts.length)
 }
 
-renderProducts(products)
+//search while typing
+searchInput.addEventListener("input", applyFilters)
 
-//search function
+//search button click
+searchBtn.addEventListener("click", applyFilters)
 
-function searchProduct(){
-  //step 1 get the search input
-  const searchTerm = searchInput.value.toLowerCase().trim()
-  
-  //step 2 matching products
-  
-}
+//press enter
+searchInput.addEventListener("keydown" , function(event){
+    if(event.key === "Enter") {
+        applyFilters()
+    }
+})
 
-// step 3
-// check if elements are connected correctly
+//category button 
+categoryFilters.addEventListener("click" , function(event){
+    const button = event.target.closest("button[data-category]")
+    if (!button) return 
+    selectedCategory= button.dataset.category
+        applyFilters()
+    }
+)
 
-console.log("EcomStore Connected")
-console.log("Products", products.length)
-console.log("Search Input ", searchInput)
-console.log("Product Grid", productGrid)
-console.log("products",products)
-console.log("Cart",cart)
-
+sortSelect.addEventListener("change" , applyFilters)
