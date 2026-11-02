@@ -9,6 +9,14 @@ const productGrid = document.getElementById("productGrid");
 const sortSelect = document.getElementById("sortSelect");
 
 
+// Product modal ke liye javascript
+
+const productModal = document.getElementById("productModal")
+const productDetails = document.getElementById("productDetails")
+const closeModal = document.getElementById("closeModal")
+
+
+
 // Step 2: Initial Project Data
 
 const products = [
@@ -146,7 +154,6 @@ function renderProducts(productList) {
                     <img
                         src="${escapeHTML(product.image)}"
                         alt="${escapeHTML(product.name)}"
-                        style ="width: 100%; height: 100%; object-fit: cover;"
                         loading="lazy"
                     >
 
@@ -168,6 +175,13 @@ function renderProducts(productList) {
                         <span class="product-price">
                             ₹${Number(product.price).toLocaleString("en-IN")}
                         </span>
+
+                        <button
+                        class="view-details-btn"
+                        data-product-id="${product.id}"
+                        >
+                        View Details
+                        </button>
 
                         <button
                             class="add-to-cart-btn"
@@ -227,7 +241,7 @@ function searchProduct() {
     renderProducts(filteredProducts);
 
     // Step 4: Show results in console
-    console.log("Search term:", searchTerm);
+    // console.log("Search term:", searchTerm);
     console.log("Matching products:", filteredProducts.length);
 }
 
@@ -244,79 +258,217 @@ searchInput.addEventListener("keydown", function(event) {
     }
 });
 
-//Apply filter 
 
-let selectedCategory ="all"
+//Apply Filters
 
+let selectedCategory = "all"
 
-function applyFilters(){
-
+function applyFilters() {
     const searchTerm = searchInput.value
     .toLowerCase()
     .trim()
 
-    //search filter
-
-    let filteredProducts  = products.filter(product =>{
-
-        return product.name 
+    // search filter
+    let filteredProducts = products.filter(product => {
+        return product.name
         .toLowerCase()
         .trim()
-
     })
 
-    //category filter
+    // category filter
 
-    if (selectedCategory   !== "all"){
-
-        filteredProducts = filteredProducts.filter(product =>{
+    if(selectedCategory !== "all") {
+        filteredProducts = filteredProducts.filter(product => {
             return product.category === selectedCategory
         })
+
     }
 
-    //sorting
+    // sorting
 
     const sortValue = sortSelect.value
-    if (sortValue === "price-low"){
-        filteredProducts.sort((a,b) =>a.price - b.price)
-
-    }else if(sortValue === "price-high"){
-        filteredProducts.sort((a,b) =>b.price - a.price)
-    }else if(sortValue === "rating"){
-        filteredProducts.sort((a,b) =>b.rating - a.rating)
-
+    if(sortValue === "price-low") {
+        filteredProducts.sort((a,b) => a.price - b.price)
+    } else if (sortValue === "price-high") {
+        filteredProducts.sort((a,b) => b.price - a.price)
+        
+    } else if (sortValue === "rating") {
+        filteredProducts.sort((a,b) => b.rating - a.rating)
     }
 
-    // update webpage
     renderProducts(filteredProducts)
-
-    //console output
-    console.log("Category :" , selectedCategory)
-    console.log("Search :" , searchTerm)
-    console.log("Sort :" , sortValue)
-    console.log("MAtching Products ", filteredProducts.length)
 }
 
-//search while typing
-searchInput.addEventListener("input", applyFilters)
+// console output
 
-//search button click
-searchBtn.addEventListener("click", applyFilters)
+console.log("Category :" , selectedCategory)
+console.log("Search :" , searchTerm)
+console.log("Sort " , sortValue)
+console.log("Matching Products ",filteredProducts.length)
 
-//press enter
-searchInput.addEventListener("keydown" , function(event){
+// search while typing
+
+searchInput.addEventListener("input",applyFilters)
+
+// search button click
+searchBtn.addEventListener("click", applyfilters)
+
+// press enter
+searchInputaddEventListener("keydown" , function(event) {
     if(event.key === "Enter") {
         applyFilters()
     }
+
 })
 
-//category button 
-categoryFilters.addEventListener("click" , function(event){
+// category button
+
+categoryFilters.addEventListener("click",function(event) {
     const button = event.target.closest("button[data-category]")
-    if (!button) return 
-    selectedCategory= button.dataset.category
-        applyFilters()
-    }
-)
+
+    if (!button) return
+    selectedCategory = button.dataset.category
+    applyFilters()
+    
+})
 
 sortSelect.addEventListener("change" , applyFilters)
+
+
+// product model ka function
+
+function openProductModal(productId) {
+    const product = products.find(item => {
+        return String(item.id) === (productId)
+    })
+
+    if(!product) {
+        console.log("product not found",productId)
+        return
+    }
+
+    productDetails.innerHTML = `
+    <img
+
+        class="modal-product-image"
+        src="${escapeHTML(product.image)}"
+        alt="${product.name}"
+
+        >
+        <h2 class="modal-product-name">
+        ${escapeHTML(product.name)}
+        </h2>
+
+        <p>
+        Category: ${escapeHTML(product.category)}
+         </p>
+
+        <p>Rating: ${escapeHTML(product.rating)}
+         </p>
+
+        <p class="modal-product-price">
+            ${Number(product.price).toLocaleString("en-IN")}
+         </p>
+
+        <p class="modal-product-description">
+            ${escapeHTML(
+                product.name ||
+                "Discover product at EcomStore"
+            )}
+         </p>
+
+    
+    
+    `
+
+    productModal.classList.remove("hidden")
+    console.log("selected pfoduct :",product)
+}
+
+// Handle clicks for view button
+
+productGrid.addEventListener("click", function(event){
+    const button = event.target.closest(".view-details-btn")
+
+    if(!button) return
+
+    const productId = button.dataset.productId
+    openProductModal(productId)
+})
+
+// close model using x- button
+
+
+
+
+
+
+
+
+
+// cart data 
+
+// const cart = []
+
+// Add product to cart
+
+function addToCart(productId) {
+    const product = products.find(item => {
+        String(item.Id ) === String(productId)
+    })
+
+    if(!product) return
+
+    const existingItem = cart.find(item => {
+        String(item.id) === String(productId)
+
+    })
+
+    if(existingItem) {
+        existingItem.quantity ++ 
+
+}
+else{
+    cart.push({
+        ...product,
+        quantity: 1
+    })
+}
+updateCart()
+}
+
+function updateCart(){
+    const totalItems = cart.reduce((total, item) => total + item.quantity, 0)
+    cartCount.textContent = totalItems
+
+    cartItemsContainer.innerHTML = ""
+
+    if(cart.length === 0) {
+        cartItemsContainer.textContent = "Your Cart is empty"
+    }
+    let totalPrice = 0
+    cart.forEach(item => {
+        totalPrice += item.price * item.quantity
+
+        const cartItem = document.createElement("div")
+    cartItem.className ="cart-item"
+
+    const name = document.createElement("h4")
+    name.textContent = item.name
+
+    const price = document.createElement("p")
+    price.textContent =`₹${item.price.toLocaleString("en-IN")} x ${item.quantity}` 
+
+    cartItem.append(name,price)
+
+    cartItemsContainer.appendChild(cartItem)
+
+    })
+    cartTotal.textContent = `Total: ₹${totalPrice.toLocaleString("en-IN")}`
+}
+
+
+//Listen for add to cart
+
+productGrid.addEventListener
+

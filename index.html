@@ -8,55 +8,69 @@
 </head>
 <body>
 
-    <!-- <--- Product details model -> -->
+    <!--- shopping cart model-->
 
-    <div id="productModal" class="modal hidden">
+    <div id="cartMODAL" class="Modal hidden">
         <div class="modal-content">
-            <button id="closeModal " class="close-modal" aria-lable = "close">
-                &times;
-            </button>
+            <button id="closeCart" class="close-modal" aria-label="Close Cart">&times;</button>
+<h2>Your Shopping Cart</h2>
+<div id="cartItems">
+    <!---cart items will appear here-->
 
-            <div id="productDetails">
-                
-            </div>
+        </div>
+        <h3 id="cartTotal">Total: $0.00</h3>
+<button id="clearCart" type="button">Clear Cart</button>    </div>
+
+<!-- product details model -->
+
+<div id="productModal" class="modal hidden">
+    <div class="modal-content">
+        <button id="closeModal" class="close-modal" aria-label="Close">
+            &times;
+        </button>
+        <div id="productDeatils">
+            
         </div>
     </div>
-    
+</div>
+
     <header>
         <a href="#" class="logo">EcomStore</a>
 
-
         <div class="search-box">
-            <input type="text" 
+            <input type="search"
             id="searchInput"
-            placeholder="Search Products..."
+            placeholder="Search Products...."
             aria-label="Search products"
             >
+
             <button id="searchBtn">Search</button>
         </div>
 
-        <button class="cart-button" id="cartBtn" type="button">
-            🛒 <span id="cartCount">0</span>
+        <button class="cart-button" id="cartButton" type="button">
+             🛒 <span id="cartCount">0</span>
         </button>
-
     </header>
 
-
     <main class="container">
+
         <section class="hero">
-            <p class="eyebrow">Your Everyday Shopping Destination</p>
+            <p class="eyebrow">Your Everyday Shopping Desination</p>
             <h1>Find Your Next <span>Favorite</span></h1>
             <p>
-                Discover products you 'll love at pricess you'll enjoy
+                Discover Products you'll love at pricess you'll enjoy
             </p>
         </section>
 
         <section class="product-section">
+
             <div class="section-heading">
+
                 <div>
                     <h2>Explore products</h2>
                     <p>Find the right products for you</p>
                 </div>
+
                 <select id="sortSelect" aria-label="Sort products">
                     <option value="default">Featured</option>
                     <option value="price-low">Price: Low To High</option>
@@ -65,32 +79,35 @@
                 </select>
             </div>
 
-            <div class="categoires" id="category-Filters">
+            <div class="categories" id="categoryFilters">
+
                 <button class="category-button active" data-category="all">All Products</button>
                 <button class="category-button" data-category="electronics">Electronics</button>
                 <button class="category-button" data-category="fashion">Fashion</button>
-                <button class="category-button" data-category="computer-accessories">Computer AccessORIES</button>
-                <button class="category-button" data-category="home-living">Home & Living</button>
+                <button class="category-button" data-category="computer">Computer Accesseries</button>
+                <button class="category-button" data-category="Home">Home & Living</button>
+
             </div>
 
             <div class="product-grid" id="productGrid">
-
                 <div class="empty-message">
+
                     <h3>
-                        Products are coming soon !
+                        Products are coming soon ! 
+
                     </h3>
+
                     <p>We'll display products here using Javascript</p>
                 </div>
             </div>
-
         </section>
     </main>
 
     <footer class="footer">
-        <p>©️ 2026 EcomStore</p>
+        <p>2026 EcomStore Built as learning Project</p>
     </footer>
 
     <script src="script.js"></script>
-
+    
 </body>
 </html>

@@ -31,6 +31,13 @@
     box-sizing: border-box;
 }
 
+
+
+
+
+
+
+
 html {
     scroll-behavior: smooth;
 }
@@ -714,3 +721,6 @@ header {
         animation-duration: 0.01ms !important;
     }
 }
+
+
+
