@@ -1,272 +1,378 @@
-// Step 1: Connect HTML Elements
+// step 1 
+// select important HTML Elements
 
-const searchInput = document.getElementById("searchInput");
-const searchBtn = document.getElementById("searchBtn");
-const cartButton = document.getElementById("cartBtn");
-const cartCount = document.getElementById("cartCount");
-const categoryFilters = document.getElementById("category-Filters");
-const productGrid = document.getElementById("productGrid");
-const sortSelect = document.getElementById("sortSelect");
+const searchInput = document.getElementById("searchInput")
+const searchBtn = document.getElementById("searchBtn")
+const cartButton = document.getElementById("cartButton")
+const cartCount = document.getElementById("cartCount")
+const categoryFilters = document.getElementById("categoryFilters")
+const productGrid = document.getElementById("productGrid")
+const sortSelect = document.getElementById("sortSelect")
+
+
 
 
 // Product modal ke liye javascript
-
 const productModal = document.getElementById("productModal")
 const productDetails = document.getElementById("productDetails")
 const closeModal = document.getElementById("closeModal")
 
 
 
-// Step 2: Initial Project Data
 
-const products = [
+// step 2 
+// Initial project data 
+
+const products = [ 
+
     {
-        id: 1,
-        name: "Wireless Headphones",
-        price: 1299,
-        Categories: "electronics",
-        rating: 4.5,
-        image: "https://m.media-amazon.com/images/I/31818K7ii3L._SY300_SX300_QL70_FMwebp_.jpg"
+        id:1,
+        name:"Wireless Headphones",
+        price:1499,
+        category:"electronics",
+        rating:4.5,
+        image:"https://assets.ajio.com/medias/sys_master/root/20250428/XRvn/680f3db77a6cd4182ffa4a8a/-473Wx593H-4944940230-multi-MODEL.jpg"
+
     },
-    {
-        id: 2,
-        name: "Bluetooth Speaker",
-        price: 899,
-        Categories: "electronics",
-        rating: 4.2,
-        image: "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400"
-    },
-    {
-        id: 3,
-        name: "Smart Watch",
-        price: 1599,
-        Categories: "electronics",
-        rating: 4.3,
-        image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400"
-    },
-    {
-        id: 4,
-        name: "Smartphone",
-        price: 12999,
-        Categories: "electronics",
-        rating: 4.6,
-        image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400"
-    },
-    {
-        id: 5,
-        name: "Running Shoes",
-        price: 1999,
-        Categories: "fashion",
-        rating: 4.4,
-        image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400"
-    },
-    {
-        id: 6,
-        name: "Classic Sunglasses",
-        price: 699,
-        Categories: "fashion",
-        rating: 4.1,
-        image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400"
-    },
-    {
-        id: 7,
-        name: "Laptop",
-        price: 45999,
-        Categories: "computer accessories",
-        rating: 4.7,
-        image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400"
-    },
-    {
-        id: 8,
-        name: "Wireless Mouse",
-        price: 499,
-        Categories: "computer accessories",
-        rating: 4.3,
-        image: "https://images.unsplash.com/photo-1527814050087-3793815479db?w=400"
-    },
-    {
-        id: 9,
-        name: "Table Lamp",
-        price: 799,
-        Categories: "home & living",
-        rating: 4.2,
-        image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=400"
-    },
-    {
-        id: 10,
-        name: "Coffee Mug",
-        price: 299,
-        Categories: "home & living",
-        rating: 4.0,
-        image: "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=400"
-    }
-];
 
 
-// Step 3: Cart Data
+    {
+        id:2,
+        name:"Smart Watch",
+        price:1499,
+        category:"electronics",
+        rating:2.5,
+        image:"https://m.media-amazon.com/images/I/41szskqocrL._SY300_SX300_QL70_FMwebp_.jpg"
 
-const cart = [];
+    },
+
+    {
+        id:3,
+        name:"Iphone 17 pro",
+        price:124990,
+        category:"electronics",
+        rating:4.5,
+        image:"https://m.media-amazon.com/images/I/71JGCn1z1TL._SX679_.jpg"
+
+    },
 
 
-// Step 4: Helper Function To Escape HTML
+    {
+        id:3,
+        name:"Running Shoes",
+        price:1999,
+        category:"fashion",
+        rating:3.5,
+        image:"https://m.media-amazon.com/images/I/614H4OnDczL._SX695_.jpg"
+
+    },
+
+
+
+    {
+        id:1,
+        name:"Wireless Headphones",
+        price:1499,
+        category:"electronics",
+        rating:4.5,
+        image:"https://assets.ajio.com/medias/sys_master/root/20250428/XRvn/680f3db77a6cd4182ffa4a8a/-473Wx593H-4944940230-multi-MODEL.jpg"
+
+    },
+
+
+    {
+        id:2,
+        name:"Smart Watch",
+        price:1499,
+        category:"electronics",
+        rating:2.5,
+        image:"https://assets.ajio.com/medias/sys_master/root/20250428/XRvn/680f3db77a6cd4182ffa4a8a/-473Wx593H-4944940230-multi-MODEL.jpg"
+
+    },
+
+    {
+        id:1,
+        name:"Wireless Headphones",
+        price:1499,
+        category:"electronics",
+        rating:4.5,
+        image:"https://assets.ajio.com/medias/sys_master/root/20250428/XRvn/680f3db77a6cd4182ffa4a8a/-473Wx593H-4944940230-multi-MODEL.jpg"
+
+    },
+
+
+    {
+        id:3,
+        name:"Running Shoes",
+        price:1999,
+        category:"fashion",
+        rating:3.5,
+        image:"https://assets.ajio.com/medias/sys_master/root/20250428/XRvn/680f3db77a6cd4182ffa4a8a/-473Wx593H-4944940230-multi-MODEL.jpg"
+
+    },
+
+
+    {
+        id:1,
+        name:"Wireless Headphones",
+        price:1499,
+        category:"electronics",
+        rating:4.5,
+        image:"https://assets.ajio.com/medias/sys_master/root/20250428/XRvn/680f3db77a6cd4182ffa4a8a/-473Wx593H-4944940230-multi-MODEL.jpg"
+
+    },
+
+
+    {
+        id:2,
+        name:"Smart Watch",
+        price:1499,
+        category:"electronics",
+        rating:2.5,
+        image:"https://assets.ajio.com/medias/sys_master/root/20250428/XRvn/680f3db77a6cd4182ffa4a8a/-473Wx593H-4944940230-multi-MODEL.jpg"
+
+    },
+
+    {
+        id:1,
+        name:"Wireless Headphones",
+        price:1499,
+        category:"electronics",
+        rating:4.5,
+        image:"https://assets.ajio.com/medias/sys_master/root/20250428/XRvn/680f3db77a6cd4182ffa4a8a/-473Wx593H-4944940230-multi-MODEL.jpg"
+
+    },
+
+
+    {
+        id:3,
+        name:"Running Shoes",
+        price:1999,
+        category:"fashion",
+        rating:3.5,
+        image:"https://assets.ajio.com/medias/sys_master/root/20250428/XRvn/680f3db77a6cd4182ffa4a8a/-473Wx593H-4944940230-multi-MODEL.jpg"
+
+    },
+
+
+
+    {
+        id:1,
+        name:"Wireless Headphones",
+        price:1499,
+        category:"electronics",
+        rating:4.5,
+        image:"https://assets.ajio.com/medias/sys_master/root/20250428/XRvn/680f3db77a6cd4182ffa4a8a/-473Wx593H-4944940230-multi-MODEL.jpg"
+
+    },
+
+
+    {
+        id:2,
+        name:"Smart Watch",
+        price:1499,
+        category:"electronics",
+        rating:2.5,
+        image:"https://assets.ajio.com/medias/sys_master/root/20250428/XRvn/680f3db77a6cd4182ffa4a8a/-473Wx593H-4944940230-multi-MODEL.jpg"
+
+    },
+
+    {
+        id:1,
+        name:"Wireless Headphones",
+        price:1499,
+        category:"electronics",
+        rating:4.5,
+        image:"https://assets.ajio.com/medias/sys_master/root/20250428/XRvn/680f3db77a6cd4182ffa4a8a/-473Wx593H-4944940230-multi-MODEL.jpg"
+
+    },
+
+
+    {
+        id:3,
+        name:"Running Shoes",
+        price:1999,
+        category:"fashion",
+        rating:3.5,
+        image:"https://assets.ajio.com/medias/sys_master/root/20250428/XRvn/680f3db77a6cd4182ffa4a8a/-473Wx593H-4944940230-multi-MODEL.jpg"
+
+    },
+
+        {
+        id:13,
+        name:"Tu 13wa hai Shoes",
+        price:1999,
+        category:"fashion",
+        rating:3.5,
+        image:"https://assets.ajio.com/medias/sys_master/root/20250428/XRvn/680f3db77a6cd4182ffa4a8a/-473Wx593H-4944940230-multi-MODEL.jpg"
+
+    },
+
+    
+]
+
+
+const cart = []
+
+// helper function to escAPE HTML
 
 function escapeHTML(value) {
-    return String(value).replace(/[&<>"']/g, character => {
-        const entities = {
-            "&": "&amp;",
-            "<": "&lt;",
-            ">": "&gt;",
-            '"': "&quot;",
-            "'": "&#39;"
-        };
+ return String(value).replace(/[&<>"']/g,character => {
+    // const entities = {
+    //     // "&": "&amp",
+    //     // "<": "&lt",
+    //     // ">": "&gt",
+    //     // '"': "&qout",
+    //     // "'": "&#39"
+    // }
+    return entities[character]
+ })
 
-        return entities[character];
-    });
 }
 
-
-// Step 5: Render Products
+// Render Products
 
 function renderProducts(productList) {
-
-    // Check if products are available
-
-    if (productList.length === 0) {
+    // empty data check
+    if(productList.length === 0) {
         productGrid.innerHTML = `
-            <div class="empty-message">
-                <h3>No products found</h3>
-                <p>Please check back later.</p>
-            </div>
-        `;
+        <div class = "empty-message">
+        <h3>No Product Data Found </h3>
+        <p>Please check back later </p>
 
-        return;
+        </div>
+        ` 
+        return
     }
 
-    // Generate HTML for every product
+    // generates HTML For Every product
 
-    let productsHTML = "";
+    let productsHTML = ""
 
     productList.forEach(product => {
         productsHTML += `
-            <article class="product-card">
+        <article class ="product-card">
 
-                <div class="product-image">
-                    <img
-                        src="${escapeHTML(product.image)}"
-                        alt="${escapeHTML(product.name)}"
-                        loading="lazy"
-                    >
+        <div class="product-image">
+        <img
+           src="${escapeHTML(product.image)}"
+           alt="${escapeHTML(product.name)}"
+           style="width:100%; height:200px; object-fit: contain"
+           loading="lazy"
+        >
+        <span class="product-rating">
+        ${Number(product.rating).toFixed(1)}
+        </span>
+        </div>
 
-                    <span class="product-rating">
-                        ${Number(product.rating).toFixed(1)}
-                    </span>
-                </div>
+        <div> 
 
-                <div>
-                    <p class="products-category">
-                        ${escapeHTML(product.Categories)}
-                    </p>
+        <p class="product-category"> 
+        ${escapeHTML(product.category)}
+        </p>
 
-                    <h3 class="product-name">
-                        ${escapeHTML(product.name)}
-                    </h3>
+        <h3 class="product-name">
+        ${escapeHTML(product.name)}
+        </h3>
 
-                    <div class="product-bottom">
-                        <span class="product-price">
-                            ₹${Number(product.price).toLocaleString("en-IN")}
-                        </span>
+        <div class="product-bottom">
 
-                        <button
-                        class="view-details-btn"
-                        data-product-id="${product.id}"
-                        >
-                        View Details
-                        </button>
+        <span class="product-price"> 
+        ₹${Number(product.price).toLocaleString("en-IN")}
+        </span>
 
-                        <button
-                            class="add-to-cart-btn"
-                            type="button"
-                            data-product-id="${Number(product.id)}"
-                            disabled
-                            title="Cart Functionality coming on Day 6"
-                        >
-                            Add To Cart
-                        </button>
-                    </div>
-                </div>
+        <button
+        class="view-details-btn"
+        data-product-id="${product.id}"
+        >
 
-            </article>
-        `;
-    });
+        View Details
+        </button>
 
-    productGrid.innerHTML = productsHTML;
+        <button
+        class="add-to-cart-btn"
+        type="button"
+        data-product-id="${Number(product.id)}"
+        
+        title="Cart funntionality coming on Day 6"
+        >
+        Add to cart
+        </button>
+        </div>
+        </div>
+        </article>
+        `
+    })
+
+    productGrid.innerHTML = productsHTML
+
+
+
 }
 
+renderProducts(products)
 
-// Step 6: Check HTML Connections
-
-console.log("EcomStore connected");
-console.log("Search Input:", searchInput);
-console.log("Category Filters:", categoryFilters);
-console.log("Product Grid:", productGrid);
-console.log("Sort Select:", sortSelect);
-console.log("Products:", products);
-console.log("Cart:", cart);
-
-
-// Step 7: Display Products
-
-renderProducts(products);
 
 
 // Search Function
 
+function SearchProduct() {
 
- // Search Function
-function searchProduct() {
-
-    // Step 1: Get search input
-    const searchTerm = searchInput.value
-        .toLowerCase()
-        .trim();
-
-    // Step 2: Filter matching products
-    const filteredProducts = products.filter(product => {
-        return product.name
-            .toLowerCase()
-            .includes(searchTerm);
-    });
-
-    // Step 3: Display filtered products
-    renderProducts(filteredProducts);
-
-    // Step 4: Show results in console
-    // console.log("Search term:", searchTerm);
-    console.log("Matching products:", filteredProducts.length);
-}
-
-// Search button click
-searchBtn.addEventListener("click", searchProduct);
-
-// Search while typing
-searchInput.addEventListener("input", searchProduct);
-
-// Search on Enter key
-searchInput.addEventListener("keydown", function(event) {
-    if (event.key === "Enter") {
-        searchProduct();
-    }
-});
-
-
-//Apply Filters
-
-let selectedCategory = "all"
-
-function applyFilters() {
+    //step 1 : get search input
     const searchTerm = searchInput.value
     .toLowerCase()
     .trim()
+
+
+    // step 2 : filter matching products
+
+    const filteredProducts = products.filter(product => {
+        return product.name
+               .toLowerCase()
+               .includes(searchTerm)
+    })
+
+    // step 3 : Render Matching products
+
+    renderProducts(filteredProducts)
+
+// step 4 : show result in console  
+
+console.log("Search term :",searchTerm)
+console.log("matching Products :",filteredProducts.length)
+
+}
+
+
+// search button click
+
+searchBtn.addEventListener("click",SearchProduct)
+
+// search while typing
+
+searchInput.addEventListener("input" , SearchProduct)
+
+searchInput.addEventListener("keydown" , function(event) {
+    if(event.key === "Enter") {
+        SearchProduct()
+
+    }
+})
+
+
+
+
+// Apply Filters
+
+let selectedCategory = "all"
+
+
+function applyFilters() {
+
+    const searchTerm = searchInput.value
+    .toLowerCase()
+    .trim()
+
 
     // search filter
     let filteredProducts = products.filter(product => {
@@ -278,6 +384,7 @@ function applyFilters() {
     // category filter
 
     if(selectedCategory !== "all") {
+
         filteredProducts = filteredProducts.filter(product => {
             return product.category === selectedCategory
         })
@@ -287,39 +394,43 @@ function applyFilters() {
     // sorting
 
     const sortValue = sortSelect.value
+
     if(sortValue === "price-low") {
         filteredProducts.sort((a,b) => a.price - b.price)
+
     } else if (sortValue === "price-high") {
         filteredProducts.sort((a,b) => b.price - a.price)
-        
     } else if (sortValue === "rating") {
         filteredProducts.sort((a,b) => b.rating - a.rating)
     }
 
+
+
+    // update webpage
     renderProducts(filteredProducts)
+
+    // console output
+
+    console.log("Category :" , selectedCategory)
+    console.log("Search :" , searchTerm)
+    console.log("Sort ",sortValue)
+    console.log("Matchig Products ",filteredProducts.length)
+
 }
 
-// console output
-
-console.log("Category :" , selectedCategory)
-console.log("Search :" , searchTerm)
-console.log("Sort " , sortValue)
-console.log("Matching Products ",filteredProducts.length)
-
 // search while typing
-
 searchInput.addEventListener("input",applyFilters)
 
 // search button click
-searchBtn.addEventListener("click", applyfilters)
+searchBtn.addEventListener("click",applyFilters)
 
 // press enter
-searchInputaddEventListener("keydown" , function(event) {
+searchInput.addEventListener("keydown" , function(event) {
     if(event.key === "Enter") {
         applyFilters()
     }
-
 })
+
 
 // category button
 
@@ -328,75 +439,98 @@ categoryFilters.addEventListener("click",function(event) {
 
     if (!button) return
     selectedCategory = button.dataset.category
+
     applyFilters()
-    
 })
 
 sortSelect.addEventListener("change" , applyFilters)
 
 
-// product model ka function
+
+
+
+
+
+// Producat modal kaa function
 
 function openProductModal(productId) {
+
     const product = products.find(item => {
         return String(item.id) === (productId)
     })
 
     if(!product) {
-        console.log("product not found",productId)
+        console.log("Product Not found ",productId)
         return
     }
 
-    productDetails.innerHTML = `
-    <img
 
+    productDetails.innerHTML = `
+
+    <img
         class="modal-product-image"
         src="${escapeHTML(product.image)}"
         alt="${product.name}"
+    >
 
-        >
-        <h2 class="modal-product-name">
+    <h2 class="modal-product-name">
         ${escapeHTML(product.name)}
-        </h2>
+    </h2>
 
-        <p>
-        Category: ${escapeHTML(product.category)}
-         </p>
+    <p> 
+    Category: ${escapeHTML(product.category)}
+    </p>
+    <p> 
+    Rating: ${escapeHTML(product.rating)}
+    </p>
+    <p class="modal-product-price"> 
+        ₹${Number(product.price).toLocaleString("en-IN")}
+    </p>
 
-        <p>Rating: ${escapeHTML(product.rating)}
-         </p>
+    <p class="modal-product-description"> 
+        ${escapeHTML(
+            product.name || 
+            "Discover product at EcomStore"
+        )}
+    </p>
 
-        <p class="modal-product-price">
-            ${Number(product.price).toLocaleString("en-IN")}
-         </p>
+   `
+   productModal.classList.remove("hidden")
+   console.log("selected product :",product)
 
-        <p class="modal-product-description">
-            ${escapeHTML(
-                product.name ||
-                "Discover product at EcomStore"
-            )}
-         </p>
-
-    
-    
-    `
-
-    productModal.classList.remove("hidden")
-    console.log("selected pfoduct :",product)
 }
 
-// Handle clicks for view button
+// handle clicks for view details  button
 
-productGrid.addEventListener("click", function(event){
+productGrid.addEventListener("click" , function(event) {
     const button = event.target.closest(".view-details-btn")
-
     if(!button) return
 
     const productId = button.dataset.productId
     openProductModal(productId)
 })
 
-// close model using x- button
+
+// close modal using X button
+closeModal.addEventListener("click" , function() {
+    productModal.classList.add("hidden")
+})
+
+// close modal when clicking outside the content 
+
+productModal.addEventListener("click" , function(event) {
+    if(event.target === productModal) {
+        productModal.classList.add("hidden")
+    }
+})
+
+// close modal with escape key
+
+document.addEventListener("keydown", function(event) {
+    if(event.key === "Escape") {
+        productModal.classList.add("hidden")
+    }
+})
 
 
 
@@ -404,71 +538,171 @@ productGrid.addEventListener("click", function(event){
 
 
 
+//Shopping Cart Functionality Javascript
 
+// const cartButton = document.getElementById("cartButton")
 
-// cart data 
+const cartModal = document.getElementById("cartModal")
+const closeCart = document.getElementById("closeCart")
+const cartItemsContainer = document.getElementById("cartItems")
+const cartTotal = document.getElementById("cartTotal")
+const clearCartButton = document.getElementById("clearCart")
+
+// cart data
 
 // const cart = []
 
 // Add product to cart
 
-function addToCart(productId) {
+function addTocart(productId) {
     const product = products.find(item => {
-        String(item.Id ) === String(productId)
+        return String(item.id) === String(productId)
     })
 
     if(!product) return
 
     const existingItem = cart.find(item => {
-        String(item.id) === String(productId)
-
+        return String(item.id) === String(productId)
     })
 
     if(existingItem) {
-        existingItem.quantity ++ 
+        existingItem.quantity++
+    } else {
+        cart.push({
+            ...product,
+            quantity: 1
+        })
+    }
 
-}
-else{
-    cart.push({
-        ...product,
-        quantity: 1
-    })
-}
-updateCart()
+    updateCart()
 }
 
-function updateCart(){
-    const totalItems = cart.reduce((total, item) => total + item.quantity, 0)
-    cartCount.textContent = totalItems
+
+//update cart
+
+
+
+function updateCart() {
+    const totaItems = cart.reduce(
+        (total,item) => total + item.quantity,
+        0
+    )
+
+    cartCount.textContent = totaItems
 
     cartItemsContainer.innerHTML = ""
 
     if(cart.length === 0) {
-        cartItemsContainer.textContent = "Your Cart is empty"
+        cartItemsContainer.textContent = "Your Cart Is Empty. "
     }
+
     let totalPrice = 0
+
     cart.forEach(item => {
         totalPrice += item.price * item.quantity
 
         const cartItem = document.createElement("div")
-    cartItem.className ="cart-item"
+        cartItem.className = "cart-item"
 
-    const name = document.createElement("h4")
-    name.textContent = item.name
+        const name = document.createElement("h4")
+        name.textContent = item.name
 
-    const price = document.createElement("p")
-    price.textContent =`₹${item.price.toLocaleString("en-IN")} x ${item.quantity}` 
+        const price = document.createElement("p")
+        price.textContent = 
+        `₹${item.price.toLocaleString("en-IN")} * ${item.quantity}`
 
-    cartItem.append(name,price)
+        const decreaseButton = document.createElement("button")
+        decreaseButton.textContent ="-"
+        decreaseButton.dataset.action = "decrease"
+        decreaseButton.dataset.productId = item.id
 
-    cartItemsContainer.appendChild(cartItem)
+        const quantity = document.createElement("span")
+        quantity.textContent = `${item.quantity}`
 
+        const increaseButton = document.createElement("button")
+        increaseButton.textContent ="+"
+        increaseButton.dataset.action = "increase"
+        increaseButton.dataset.productId = item.id
+
+        const removeButton = document.createElement("button")
+        removeButton.textContent = "Remove"
+        removeButton.dataset.action = "remove"
+        removeButton.dataset.productId = item.id
+
+
+        cartItem.append(
+            name,
+            price,
+            decreaseButton,
+            quantity,
+            increaseButton,
+            removeButton
+        )
+
+        cartItemsContainer.appendChild(cartItem)
     })
-    cartTotal.textContent = `Total: ₹${totalPrice.toLocaleString("en-IN")}`
+    cartTotal.textContent = 
+    `Total: ₹${totalPrice.toLocaleString("en-IN")}`
 }
+// Listen for add to cart
 
+productGrid.addEventListener("click" , function(event) {
+    const button = event.target.closest(".add-to-cart-btn")
+    if(!button) return
+    addTocart(button.dataset.productId)
+})
 
-//Listen for add to cart
+// Open Cart
+cartButton.addEventListener("click" , function() {
+    cartModal.classList.remove("hidden")
+    updateCart()
+})
 
-productGrid.addEventListener
+// close cart
 
+closeCart.addEventListener("click" , function() {
+    cartModal.classList.add("hidden")
+})
+
+//increase , decrease and remove product
+
+cartItemsContainer.addEventListener("click" , function(event){
+    const button = event.target.closest("button[data-action]")
+
+    if(!button) return
+
+    const productId = button.dataset.productId
+    const action = button.dataset.action
+
+    const itemIndex = cart.findIndex(item => String(item.id) === String(productId))
+
+    if(itemIndex === -1) return
+
+    if (action === "increase") {
+        cart[itemIndex].quantity++
+    }
+
+    if(action === "decrease") {
+        cart[itemIndex].quantity--
+
+        if(cart[itemIndex].quantity <= 0){
+            cart.splice(itemIndex,1)
+        }
+    }
+if(action === "remove") {
+    cart.splice(itemIndex,1)
+}
+updateCart()
+
+})
+
+// clear complete cart
+
+clearCartButton.addEventListener("click" , function() {
+    cart.length = 0
+    updateCart()
+})
+
+// initial cart display
+
+updateCart()
